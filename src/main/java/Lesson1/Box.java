@@ -1,9 +1,10 @@
 package Lesson1;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Box<T extends Fruit> {
-    private ArrayList<T> contents = new ArrayList<>();
+    private List<T> contents = new ArrayList<>();
 
     public void add(T obj) {
        if(!contents.isEmpty() && (!obj.getClass().equals(contents.get(0).getClass()))) {
@@ -41,7 +42,7 @@ public class Box<T extends Fruit> {
         return contents.size();
     }
 
-    public ArrayList<T> getContents() {
+    public List<T> getContents() {
         return contents;
     }
 }
