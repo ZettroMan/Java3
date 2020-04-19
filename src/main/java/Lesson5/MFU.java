@@ -48,6 +48,8 @@ public class MFU {
             }
             System.out.printf("   Копирование: сканирование %s завершено.", doc);
         }
+        // после завершения этапа сканирования в операции "Копирование"
+        // МФУ в принципе готов к началу следующего копирования или сканирования
         synchronized (printLock) {
             System.out.printf("\nКопирование: начало печати документа %s (всего %d страниц) ...", doc, pages);
             try {
@@ -68,35 +70,35 @@ public class MFU {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                mfu.copy("Doc 1", 15);
+                mfu.copy("Doc 1", 8);
             }
         }).start();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                mfu.print("Doc 2", 30);
+                mfu.print("Doc 2", 9);
             }
         }).start();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                mfu.print("Doc 3", 20);
+                mfu.print("Doc 3", 7);
             }
         }).start();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                mfu.scan("Doc 4", 25);
+                mfu.scan("Doc 4", 12);
             }
         }).start();
 
-          new Thread(new Runnable() {
+        new Thread(new Runnable() {
             @Override
             public void run() {
-                mfu.copy("Doc 5", 7);
+                mfu.copy("Doc 5", 6);
             }
         }).start();
 

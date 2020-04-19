@@ -42,7 +42,7 @@ public class Car implements Runnable {
             }
         } catch (Exception e) {
             race.decreaseCarsCount();  //чтобы правильно считались места, занимаемые участниками
-            System.out.println(name + " сошел с дистанции");
+            System.out.println(name + " сошёл с дистанции");
             e.printStackTrace();
         }
 
