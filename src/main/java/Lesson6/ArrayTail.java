@@ -2,7 +2,7 @@ package Lesson6;
 
 import java.util.Arrays;
 
-public abstract class ArrayTail {
+public class ArrayTail {
 
     public static int[] getArrayTail(int[] array, int lastValue) {
         int index = array.length - 1;

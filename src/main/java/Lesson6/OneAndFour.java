@@ -1,6 +1,6 @@
 package Lesson6;
 
-public abstract class OneAndFour {
+public class OneAndFour {
 
     public static boolean hasOneAndFour(int[] array) {
 
