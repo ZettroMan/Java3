@@ -56,17 +56,9 @@ public class Tester {
                 methodList.get(i).invoke(testObject);
             }
             afterMethod.invoke(testObject);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (NoSuchMethodException | InstantiationException | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
         }
-
-
 
 
     }

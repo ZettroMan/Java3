@@ -21,7 +21,7 @@ public class DZChecker {
                 continue;
             }
 
-            System.out.printf("Testing %s ...\n", o);
+            System.out.printf("\nTesting %s ...\n", o);
             try {
                 Class testClass = URLClassLoader.newInstance(new URL[]{file.toURL()}).loadClass(mass[0]);
 
@@ -118,7 +118,7 @@ public class DZChecker {
                 }
 
                 // тестируем isLeapYear
-                //TODO Нужен более строгий тест, на случайных числах не всегда выявляется ошибка
+                // сначала тестируем на случайных числах
                 testPassed = true;
                 for (int i = 0; i < N_TESTS; i++) {
                     int a = random.nextInt(5000) + 1;  // проверяем только года нашей эры
@@ -127,6 +127,23 @@ public class DZChecker {
                         break;
                     }
                 }
+                // затем проверяем несколько типичных случаев (так как они могли быть не протестированы выше)
+                if (!isLeapYear.invoke(testObject, 700).equals(isLeapYearRight(700))) {
+                    testPassed = false;
+                }
+                if (!isLeapYear.invoke(testObject, 1800).equals(isLeapYearRight(1800))) {
+                    testPassed = false;
+                }
+                if (!isLeapYear.invoke(testObject, 1900).equals(isLeapYearRight(1900))) {
+                    testPassed = false;
+                }
+                if (!isLeapYear.invoke(testObject, 2000).equals(isLeapYearRight(2000))) {
+                    testPassed = false;
+                }
+                if (!isLeapYear.invoke(testObject, 2020).equals(isLeapYearRight(2020))) {
+                    testPassed = false;
+                }
+
                 if (testPassed) {
                     System.out.println("IsLeapYear Test passed.");
                 } else {
